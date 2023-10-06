@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "dev:migration:run": "prisma migrate dev",
+    "test:load-envs": "dotenv -e .env.test",
     "test:migration:run": "dotenv -e .env.test prisma migrate deploy",
-    "test": "dotenv -e .env.test jest"
+    "test": "npm run test:load-envs -- jest -- --runInBand",
+    "test:coverage": "npm run test:load-envs -- jest -- --runInBand --coverage"
   },
   "keywords": [],
   "author": "",
